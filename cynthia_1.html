@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bimbel Cerdas Belajar – Les SD, SMP, SMA</title>
+<meta name="description" content="Bimbel untuk siswa SD, SMP, dan SMA. Lihat mata pelajaran, biaya, testimoni, dan daftar sekarang.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1c2150;--ink2:#3a4070;--paper:#f6f7fc;--white:#fff;--pencil:#ffc93c;--line:#d9dcef;--mint:#dff4ea;
+--h:'Bricolage Grotesque','Trebuchet MS',sans-serif;--b:'Nunito Sans','Segoe UI',Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:400 17px/1.6 var(--b);color:var(--ink);background:var(--paper)}
+h1,h2,h3{font-family:var(--h);line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.3rem,6vw,4rem);font-weight:800}h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:800}h3{font-size:1.25rem}
+p{margin:0 0 1em;max-width:62ch}a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.btn{display:inline-block;background:var(--pencil);color:var(--ink);font:700 1rem var(--b);padding:14px 26px;border-radius:999px;border:2px solid var(--ink);text-decoration:none;cursor:pointer;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn.alt{background:var(--white)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+header.top{position:sticky;top:0;z-index:5;background:rgba(246,247,252,.95);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:12px}
+.logo{font:800 1.2rem var(--h);text-decoration:none}
+nav{display:flex;gap:18px;align-items:center;font-weight:600}
+nav a{text-decoration:none}nav a:hover{text-decoration:underline}
+.hero{padding:88px 0 72px;background-color:var(--paper);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:32px 32px;border-bottom:2px solid var(--ink)}
+.hero .wrap{display:grid;gap:36px;grid-template-columns:1.4fr 1fr;align-items:center}
+.hero p.lead{font-size:1.2rem}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.note{background:var(--white);border:2px solid var(--ink);border-radius:14px;padding:22px;box-shadow:6px 6px 0 var(--ink);transform:rotate(1.5deg)}
+.note h3{margin-bottom:.6em}.note ul{margin:0;padding-left:1.1em}.note li{margin-bottom:.4em}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+.tabs button{font:700 1rem var(--b);padding:10px 22px;border-radius:999px;border:2px solid var(--ink);background:var(--white);color:var(--ink);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--white)}
+.panel{background:var(--white);border:2px solid var(--ink);border-radius:14px;padding:26px}
+.panel[hidden]{display:none}
+.chips{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:14px 0 0;list-style:none}
+.chips li{background:var(--mint);border-radius:8px;padding:6px 14px;font-weight:600}
+.plans{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:28px}
+.plan{background:var(--white);border:2px solid var(--ink);border-radius:14px;padding:26px;display:flex;flex-direction:column}
+.plan.best{background:var(--pencil);box-shadow:6px 6px 0 var(--ink)}
+.plan .price{font:800 2rem var(--h);margin:6px 0 2px}.plan small{display:block;margin-bottom:14px}
+.plan ul{padding-left:1.1em;margin:0 0 20px;flex:1}.plan li{margin-bottom:.4em}
+.fine{font-size:.92rem;color:var(--ink2)}
+.steps{counter-reset:s;list-style:none;padding:0;margin:28px 0 0;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.steps li{counter-increment:s;background:var(--white);border:2px solid var(--ink);border-radius:14px;padding:22px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--pencil);border:2px solid var(--ink);font:800 1.1rem var(--h);margin-bottom:10px}
+.alt-bg{background:var(--ink);color:var(--white)}
+.alt-bg .fine{color:#c9cdf0}
+.videos{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:28px}
+.vid{aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#2b3170;border:2px solid var(--pencil);position:relative;display:grid;place-items:center;text-align:center;padding:14px}
+.vid button{all:unset;cursor:pointer;position:absolute;inset:0}
+.vid img{width:100%;height:100%;object-fit:cover;display:block}
+.vid .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:var(--pencil);color:var(--ink);display:grid;place-items:center;font-size:1.6rem;border:2px solid var(--ink)}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vcap{margin-top:8px;font-weight:600}
+form{background:var(--white);border:2px solid var(--ink);border-radius:14px;padding:28px;display:grid;gap:16px;grid-template-columns:1fr 1fr;box-shadow:6px 6px 0 var(--ink);margin-top:24px}
+form .full{grid-column:1/-1}
+label{display:block;font-weight:700;margin-bottom:4px}
+input,select,textarea{width:100%;font:400 1rem var(--b);padding:11px 12px;border:2px solid var(--ink);border-radius:8px;background:var(--paper);color:var(--ink)}
+details{background:var(--white);border:2px solid var(--ink);border-radius:12px;padding:14px 18px;margin-bottom:12px}
+summary{font-weight:700;cursor:pointer}details p{margin:10px 0 0}
+footer{background:var(--ink);color:var(--white);padding:36px 0;text-align:center}
+footer a{color:var(--pencil)}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}.note{transform:none}form{grid-template-columns:1fr}nav a.h{display:none}section{padding:52px 0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="#atas" id="brand">Bimbel Cerdas Belajar</a>
+  <nav><a class="h" href="#program">Program</a><a class="h" href="#biaya">Biaya</a><a class="h" href="#testimoni">Testimoni</a><a class="btn" style="padding:8px 18px;box-shadow:none" href="#daftar">Daftar</a></nav>
+</div></header>
+
+<main id="atas">
+<div class="hero"><div class="wrap">
+  <div>
+    <h1>Belajar sampai paham, bukan sekadar hafal.</h1>
+    <p class="lead">Bimbel untuk siswa SD, SMP, dan SMA. Kelas kecil, pengajar sabar, dan materi sesuai kurikulum di sekolahmu.</p>
+    <div class="cta"><a class="btn" href="#daftar">Daftar sekarang</a><a class="btn alt" href="#biaya">Lihat biaya</a></div>
+  </div>
+  <aside class="note" aria-label="Ringkasan">
+    <h3>Yang kamu dapat</h3>
+    <ul>
+      <li>Kelas kecil, maksimal 8 siswa</li>
+      <li>Latihan soal dan pembahasan tiap pertemuan</li>
+      <li>Laporan perkembangan untuk orang tua</li>
+      <li>Kelas percobaan gratis</li>
+    </ul>
+  </aside>
+</div></div>
+
+<section id="program"><div class="wrap">
+  <h2>Pilih jenjang dan mata pelajaran</h2>
+  <p>Pilih jenjang sekolahmu untuk melihat pelajaran yang tersedia.</p>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div id="panels"></div>
+</div></section>
+
+<section id="biaya" style="background:var(--white);border-block:2px solid var(--ink)"><div class="wrap">
+  <h2>Biaya bimbel</h2>
+  <p>Pilih program sesuai kebutuhan belajar. Biaya bisa dibayar per bulan.</p>
+  <div class="plans" id="plans"></div>
+  <p class="fine" style="margin-top:20px" id="priceNote"></p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Cara mendaftar</h2>
+  <ol class="steps">
+    <li><h3>Isi formulir</h3>Isi data siswa di bagian bawah halaman ini.</li>
+    <li><h3>Ngobrol lewat WhatsApp</h3>Kami membalas untuk mencocokkan jadwal dan program.</li>
+    <li><h3>Ikut kelas percobaan</h3>Coba dulu sebelum memutuskan.</li>
+    <li><h3>Mulai belajar</h3>Bayar biaya pertama dan ikut kelas sesuai jadwal.</li>
+  </ol>
+</div></section>
+
+<section id="testimoni" class="alt-bg"><div class="wrap">
+  <h2>Kata mereka yang sudah belajar di sini</h2>
+  <p class="fine">Klik video untuk memutar.</p>
+  <div class="videos" id="videos"></div>
+</div></section>
+
+<section id="daftar"><div class="wrap">
+  <h2>Daftar sekarang</h2>
+  <p>Isi formulir ini. Setelah menekan tombol, WhatsApp akan terbuka dengan pesan yang sudah terisi. Tinggal kirim.</p>
+  <form id="reg">
+    <div><label for="nama">Nama siswa</label><input id="nama" required autocomplete="name"></div>
+    <div><label for="ortu">Nama orang tua/wali</label><input id="ortu" required></div>
+    <div><label for="jenjang">Jenjang</label><select id="jenjang" required></select></div>
+    <div><label for="kelas">Kelas</label><input id="kelas" placeholder="Contoh: 8" required></div>
+    <div class="full"><label for="prog">Program</label><select id="prog" required></select></div>
+    <div class="full"><label for="mapel">Mata pelajaran yang diminati</label><input id="mapel" placeholder="Contoh: Matematika, Fisika" required></div>
+    <div class="full"><label for="cat">Catatan (opsional)</label><textarea id="cat" rows="3" placeholder="Jadwal yang diinginkan, kesulitan belajar, dll."></textarea></div>
+    <div class="full"><button class="btn" type="submit">Kirim lewat WhatsApp</button></div>
+  </form>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Pertanyaan yang sering diajukan</h2>
+  <details><summary>Apakah ada kelas percobaan?</summary><p>Ada. Kelas percobaan pertama gratis, tanpa kewajiban lanjut.</p></details>
+  <details><summary>Kelasnya online atau tatap muka?</summary><p>Isi dengan format kelas bimbel Anda: tatap muka, online, atau keduanya.</p></details>
+  <details><summary>Bagaimana cara pembayarannya?</summary><p>Isi dengan cara pembayaran: transfer bank, e-wallet, atau tunai.</p></details>
+  <details><summary>Bisa ganti jadwal?</summary><p>Isi dengan kebijakan pergantian jadwal atau kelas pengganti.</p></details>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p style="margin:0 auto 6px"><strong id="fName"></strong></p>
+  <p style="margin:0 auto" class="fine" id="fInfo"></p>
+</div></footer>
+
+<script>
+/* ====== UBAH DATA DI SINI SAJA ====== */
+const CONFIG = {
+  nama: "Bimbel Cerdas Belajar",
+  whatsapp: "6281234567890",          // format 62..., tanpa + dan tanpa 0 di depan
+  alamat: "Alamat bimbel · Kota · Jam layanan Senin–Sabtu 14.00–20.00",
+  catatanHarga: "Biaya di atas contoh. Ganti dengan harga sebenarnya. Biaya pendaftaran: Rp 100.000 (sekali bayar).",
+  jenjang: {
+    "SD":  {kelas:"Kelas 1–6",  mapel:["Matematika","Bahasa Indonesia","IPA","Bahasa Inggris","Calistung"]},
+    "SMP": {kelas:"Kelas 7–9",  mapel:["Matematika","IPA","Bahasa Inggris","Bahasa Indonesia","IPS","Persiapan ujian sekolah"]},
+    "SMA": {kelas:"Kelas 10–12",mapel:["Matematika","Fisika","Kimia","Biologi","Ekonomi","Bahasa Inggris","Persiapan UTBK"]}
+  },
+  program: [
+    {nama:"Kelas kelompok", harga:"Rp 250.000", per:"per bulan, per mata pelajaran", isi:["8 pertemuan per bulan","Maksimal 8 siswa","Latihan soal dan pembahasan"]},
+    {nama:"Kelas intensif", harga:"Rp 450.000", per:"per bulan, per mata pelajaran", isi:["12 pertemuan per bulan","Maksimal 5 siswa","Tryout bulanan","Laporan perkembangan"], best:true},
+    {nama:"Privat", harga:"Rp 120.000", per:"per pertemuan", isi:["Jadwal fleksibel","1 siswa, 1 pengajar","Materi sesuai kebutuhan"]}
+  ],
+  // isi dengan ID video YouTube (bagian setelah v= pada link). Kosongkan ("") jika belum ada.
+  video: [
+    {id:"", judul:"Testimoni siswa SMP"},
+    {id:"", judul:"Testimoni siswa SMA"},
+    {id:"", judul:"Testimoni orang tua"}
+  ]
+};
+/* ==================================== */
+const $=s=>document.querySelector(s), esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.title=CONFIG.nama+" – Les SD, SMP, SMA";
+$('#brand').textContent=CONFIG.nama;$('#fName').textContent=CONFIG.nama;$('#fInfo').textContent=CONFIG.alamat;$('#priceNote').textContent=CONFIG.catatanHarga;
+
+// Tab jenjang
+const keys=Object.keys(CONFIG.jenjang);
+keys.forEach((k,i)=>{
+  const b=document.createElement('button');b.role='tab';b.textContent=k;b.id='t-'+k;b.setAttribute('aria-selected',i==0);b.setAttribute('aria-controls','p-'+k);
+  b.onclick=()=>keys.forEach(x=>{const on=x==k;$('#t-'+x).setAttribute('aria-selected',on);$('#p-'+x).hidden=!on});
+  $('#tabs').append(b);
+  const d=CONFIG.jenjang[k],p=document.createElement('div');p.className='panel';p.id='p-'+k;p.hidden=i>0;p.role='tabpanel';
+  p.innerHTML=`<h3>${esc(k)} · ${esc(d.kelas)}</h3><ul class="chips">${d.mapel.map(m=>`<li>${esc(m)}</li>`).join('')}</ul>`;
+  $('#panels').append(p);
+});
+$('#jenjang').innerHTML='<option value="">Pilih jenjang</option>'+keys.map(k=>`<option>${esc(k)}</option>`).join('');
+
+// Harga
+$('#plans').innerHTML=CONFIG.program.map(p=>`<div class="plan${p.best?' best':''}"><h3>${esc(p.nama)}</h3><div class="price">${esc(p.harga)}</div><small>${esc(p.per)}</small><ul>${p.isi.map(i=>`<li>${esc(i)}</li>`).join('')}</ul><a class="btn${p.best?' alt':''}" href="#daftar" data-prog="${esc(p.nama)}">Pilih program ini</a></div>`).join('');
+$('#prog').innerHTML='<option value="">Pilih program</option>'+CONFIG.program.map(p=>`<option>${esc(p.nama)}</option>`).join('');
+document.querySelectorAll('[data-prog]').forEach(a=>a.addEventListener('click',()=>$('#prog').value=a.dataset.prog));
+
+// Video (dimuat saat diklik agar halaman ringan)
+$('#videos').innerHTML=CONFIG.video.map((v,i)=>`<div><div class="vid" id="v${i}">${v.id?`<img src="https://img.youtube.com/vi/${esc(v.id)}/hqdefault.jpg" alt="Cuplikan video: ${esc(v.judul)}" loading="lazy"><span class="play" aria-hidden="true">▶</span><button aria-label="Putar video ${esc(v.judul)}"></button>`:'<span class="fine">Video testimoni akan tampil di sini</span>'}</div><div class="vcap">${esc(v.judul)}</div></div>`).join('');
+CONFIG.video.forEach((v,i)=>{if(!v.id)return;$('#v'+i+' button').onclick=()=>{$('#v'+i).innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.id)}?autoplay=1" title="${esc(v.judul)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`}});
+
+// Formulir → WhatsApp
+$('#reg').addEventListener('submit',e=>{
+  e.preventDefault();
+  const v=id=>$('#'+id).value.trim();
+  const t=`Halo ${CONFIG.nama}, saya ingin mendaftar.\n\nNama siswa: ${v('nama')}\nOrang tua/wali: ${v('ortu')}\nJenjang/kelas: ${v('jenjang')} kelas ${v('kelas')}\nProgram: ${v('prog')}\nMata pelajaran: ${v('mapel')}\nCatatan: ${v('cat')||'-'}`;
+  window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t)}`,'_blank','noopener');
+});
+</script>
+</body>
+</html>
