@@ -64,6 +64,12 @@ label{display:block;font-weight:700;margin-bottom:4px}
 input,select,textarea{width:100%;font:400 1rem var(--b);padding:11px 12px;border:2px solid var(--ink);border-radius:8px;background:var(--paper);color:var(--ink)}
 details{background:var(--white);border:2px solid var(--ink);border-radius:12px;padding:14px 18px;margin-bottom:12px}
 summary{font-weight:700;cursor:pointer}details p{margin:10px 0 0}
+.q{border:2px solid var(--line);border-radius:10px;padding:14px 16px;margin:0 0 14px}
+.q legend{font-weight:700;padding:0 6px}
+.opt{display:flex;gap:10px;align-items:center;font-weight:400;padding:6px 0;cursor:pointer}
+.opt input{width:auto}
+.res{background:var(--mint);border-radius:10px;padding:18px;margin-bottom:14px}
+.res .btn{margin:6px 8px 0 0}
 footer{background:var(--ink);color:var(--white);padding:36px 0;text-align:center}
 footer a{color:var(--pencil)}
 @media(max-width:760px){.hero .wrap{grid-template-columns:1fr}.note{transform:none}form{grid-template-columns:1fr}nav a.h{display:none}section{padding:52px 0}}
@@ -74,7 +80,7 @@ footer a{color:var(--pencil)}
 
 <header class="top"><div class="wrap">
   <a class="logo" href="#atas" id="brand">Bimbel Cerdas Belajar</a>
-  <nav><a class="h" href="#program">Program</a><a class="h" href="#biaya">Biaya</a><a class="h" href="#testimoni">Testimoni</a><a class="btn" style="padding:8px 18px;box-shadow:none" href="#daftar">Daftar</a></nav>
+  <nav><a class="h" href="#program">Program</a><a class="h" href="#tes">Tes</a><a class="h" href="#biaya">Biaya</a><a class="h" href="#testimoni">Testimoni</a><a class="btn" style="padding:8px 18px;box-shadow:none" href="#daftar">Daftar</a></nav>
 </div></header>
 
 <main id="atas">
@@ -100,6 +106,13 @@ footer a{color:var(--pencil)}
   <p>Pilih jenjang sekolahmu untuk melihat pelajaran yang tersedia.</p>
   <div class="tabs" role="tablist" id="tabs"></div>
   <div id="panels"></div>
+</div></section>
+
+<section id="tes" style="padding-top:0"><div class="wrap">
+  <h2>Tes penempatan gratis</h2>
+  <p>Belum yakin mulai dari level mana? Kerjakan beberapa soal singkat, lalu lihat program yang cocok untukmu.</p>
+  <div class="tabs" id="ptTabs" role="group" aria-label="Pilih jenjang tes"></div>
+  <div class="panel" id="ptBox"><p style="margin:0">Pilih jenjang di atas untuk memulai tes.</p></div>
 </div></section>
 
 <section id="biaya" style="background:var(--white);border-block:2px solid var(--ink)"><div class="wrap">
@@ -129,6 +142,7 @@ footer a{color:var(--pencil)}
   <h2>Daftar sekarang</h2>
   <p>Isi formulir ini. Setelah menekan tombol, WhatsApp akan terbuka dengan pesan yang sudah terisi. Tinggal kirim.</p>
   <form id="reg">
+    <input type="hidden" id="hasil">
     <div><label for="nama">Nama siswa</label><input id="nama" required autocomplete="name"></div>
     <div><label for="ortu">Nama orang tua/wali</label><input id="ortu" required></div>
     <div><label for="jenjang">Jenjang</label><select id="jenjang" required></select></div>
@@ -171,6 +185,37 @@ const CONFIG = {
     {nama:"Kelas intensif", harga:"Rp 450.000", per:"per bulan, per mata pelajaran", isi:["12 pertemuan per bulan","Maksimal 5 siswa","Tryout bulanan","Laporan perkembangan"], best:true},
     {nama:"Privat", harga:"Rp 120.000", per:"per pertemuan", isi:["Jadwal fleksibel","1 siswa, 1 pengajar","Materi sesuai kebutuhan"]}
   ],
+  // Tes penempatan. Soal di bawah hanya CONTOH. Ganti dengan soal bimbel sendiri.
+  // k = nomor jawaban benar, dihitung dari 0 (0 = pilihan pertama, 1 = kedua, dst).
+  tes: {
+    mapel: "Matematika",
+    soal: {
+      "SD": [
+        {q:"345 + 278 = …", o:["613","623","633","523"], k:1},
+        {q:"7 × 8 = …", o:["54","56","58","64"], k:1},
+        {q:"3/4 dari 20 adalah …", o:["10","12","15","16"], k:2},
+        {q:"Keliling persegi dengan sisi 6 cm adalah …", o:["12 cm","24 cm","36 cm","18 cm"], k:1}
+      ],
+      "SMP": [
+        {q:"Hasil dari −5 + 12 − 3 adalah …", o:["4","10","14","−10"], k:0},
+        {q:"Nilai x pada 2x + 6 = 18 adalah …", o:["4","6","9","12"], k:1},
+        {q:"Luas segitiga dengan alas 10 cm dan tinggi 6 cm adalah …", o:["30 cm²","60 cm²","16 cm²","36 cm²"], k:0},
+        {q:"25% dari 240 adalah …", o:["50","60","75","80"], k:1}
+      ],
+      "SMA": [
+        {q:"Jika f(x) = 2x + 3, maka f(4) = …", o:["8","11","12","14"], k:1},
+        {q:"Akar-akar x² − 5x + 6 = 0 adalah …", o:["1 dan 6","2 dan 3","−2 dan −3","1 dan 5"], k:1},
+        {q:"sin 30° = …", o:["1/2","√3/2","1","√2/2"], k:0},
+        {q:"²log 32 = …", o:["4","5","6","16"], k:1}
+      ]
+    },
+    // min = persentase benar minimal. Urutkan dari kecil ke besar.
+    level: [
+      {min:0,  nama:"Penguatan dasar", saran:"Konsep dasar perlu dimantapkan dulu supaya materi berikutnya terasa lebih mudah.", program:"Kelas kelompok"},
+      {min:50, nama:"Menengah", saran:"Pemahamanmu sudah cukup baik. Latihan soal rutin akan membantu naik level.", program:"Kelas kelompok"},
+      {min:80, nama:"Lanjutan", saran:"Dasarmu kuat. Kamu siap menghadapi soal yang lebih menantang dan persiapan ujian.", program:"Kelas intensif"}
+    ]
+  },
   // isi dengan ID video YouTube (bagian setelah v= pada link). Kosongkan ("") jika belum ada.
   video: [
     {id:"", judul:"Testimoni siswa SMP"},
@@ -204,11 +249,42 @@ document.querySelectorAll('[data-prog]').forEach(a=>a.addEventListener('click',(
 $('#videos').innerHTML=CONFIG.video.map((v,i)=>`<div><div class="vid" id="v${i}">${v.id?`<img src="https://img.youtube.com/vi/${esc(v.id)}/hqdefault.jpg" alt="Cuplikan video: ${esc(v.judul)}" loading="lazy"><span class="play" aria-hidden="true">▶</span><button aria-label="Putar video ${esc(v.judul)}"></button>`:'<span class="fine">Video testimoni akan tampil di sini</span>'}</div><div class="vcap">${esc(v.judul)}</div></div>`).join('');
 CONFIG.video.forEach((v,i)=>{if(!v.id)return;$('#v'+i+' button').onclick=()=>{$('#v'+i).innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.id)}?autoplay=1" title="${esc(v.judul)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`}});
 
+// Tes penempatan
+const T=CONFIG.tes;
+Object.keys(T.soal).forEach(k=>{
+  const b=document.createElement('button');b.type='button';b.textContent=k;b.id='pt-'+k;
+  b.setAttribute('aria-selected','false');b.onclick=()=>ptRender(k);$('#ptTabs').append(b);
+});
+function ptRender(k){
+  Object.keys(T.soal).forEach(x=>$('#pt-'+x).setAttribute('aria-selected',x==k));
+  const qs=T.soal[k];
+  $('#ptBox').innerHTML=`<h3>Tes ${esc(k)}: ${esc(T.mapel)}</h3>`+
+    qs.map((s,i)=>`<fieldset class="q"><legend>${i+1}. ${esc(s.q)}</legend>${s.o.map((o,j)=>`<label class="opt"><input type="radio" name="q${i}" value="${j}"> ${esc(o)}</label>`).join('')}</fieldset>`).join('')+
+    `<button type="button" class="btn" id="ptDone">Lihat hasil</button><p class="fine" id="ptErr" role="alert" style="margin-top:10px"></p>`;
+  $('#ptDone').onclick=()=>{
+    let benar=0;
+    for(let i=0;i<qs.length;i++){
+      const c=document.querySelector(`input[name=q${i}]:checked`);
+      if(!c){$('#ptErr').textContent='Jawab semua soal dulu ya.';return}
+      if(+c.value===qs[i].k)benar++;
+    }
+    const pct=benar/qs.length*100, lv=T.level.filter(l=>pct>=l.min).pop();
+    $('#ptBox').innerHTML=`<div class="res" role="status"><h3>Skor: ${benar} dari ${qs.length}</h3><p><strong>Level: ${esc(lv.nama)}</strong></p><p>${esc(lv.saran)}</p><p>Program yang cocok: <strong>${esc(lv.program)}</strong></p><button type="button" class="btn" id="ptReg">Daftar dengan hasil ini</button><button type="button" class="btn alt" id="ptAgain">Ulangi tes</button></div><p class="fine" style="margin:0">Hasil ini hanya gambaran awal. Pengajar akan menyesuaikan lagi saat kelas percobaan.</p>`;
+    $('#ptAgain').onclick=()=>ptRender(k);
+    $('#ptReg').onclick=()=>{
+      $('#jenjang').value=k;$('#prog').value=lv.program;
+      if(!$('#mapel').value)$('#mapel').value=T.mapel;
+      $('#hasil').value=`Tes penempatan ${k} ${T.mapel}: ${benar}/${qs.length} (${lv.nama})`;
+      location.hash='#daftar';
+    };
+  };
+}
+
 // Formulir → WhatsApp
 $('#reg').addEventListener('submit',e=>{
   e.preventDefault();
   const v=id=>$('#'+id).value.trim();
-  const t=`Halo ${CONFIG.nama}, saya ingin mendaftar.\n\nNama siswa: ${v('nama')}\nOrang tua/wali: ${v('ortu')}\nJenjang/kelas: ${v('jenjang')} kelas ${v('kelas')}\nProgram: ${v('prog')}\nMata pelajaran: ${v('mapel')}\nCatatan: ${v('cat')||'-'}`;
+  const t=`Halo ${CONFIG.nama}, saya ingin mendaftar.\n\nNama siswa: ${v('nama')}\nOrang tua/wali: ${v('ortu')}\nJenjang/kelas: ${v('jenjang')} kelas ${v('kelas')}\nProgram: ${v('prog')}\nMata pelajaran: ${v('mapel')}${v('hasil')?'\nHasil tes: '+v('hasil'):''}\nCatatan: ${v('cat')||'-'}`;
   window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t)}`,'_blank','noopener');
 });
 </script>
